@@ -1,0 +1,8 @@
+<%= link_to "Home", root_path %>
+<h1 class="center">Retrieve all Transaction Data from the Gateway*</h1>
+<h4 class="center">*delete all prior database records first to avoid duplicates*</h4>
+<div class="center">
+  <%= form_for(@transaction, html: { role: "form" }) do |f| %>
+    <%= f.submit "Retrieve Data From Braintree" %>
+  <% end %>
+</div>

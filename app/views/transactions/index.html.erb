@@ -1,0 +1,21 @@
+<%= link_to "Retrieve all transactions from gateway", new_transaction_path %>
+<div class="center">
+  <h1>Home</h1>
+
+  <h3 class="center">Transaction Statuses</h3>
+  <%= pie_chart @transactions.group(:status).count %>
+  <h3 class="center">Transaction Recurring Values</h3>
+  <%= pie_chart @transactions.group(:recurring).count %>
+  <h3 class="center">Transactions By Payment Method Types</h3>
+  <%= pie_chart @transactions.group(:payment_instrument_type).count %>
+  <h3 class="center">Transaction Amount</h3>
+  <%= column_chart @transactions.group(:amount).count %>
+  <h3 class="center">Transactions by Day of Week</h3>
+  <%= column_chart @transactions.group_by_day_of_week(:date, format: "%a").count %>
+  <h3 class="center">Transactions by Month</h3>
+  <%= column_chart @transactions.group_by_month_of_year(:date).count %>
+</div>
+<hr/>
+<div class="center">
+  <%= link_to "Delete All Transaction Records", transaction_path(@transactions), method: :delete, data: { confirm: "You sure?" } %>
+</div>
